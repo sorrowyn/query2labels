@@ -73,6 +73,21 @@ main_mlc.py \
 --hidden_dim 2048 --dim_feedforward 8192 \
 --enc_layers 1 --dec_layers 2 --nheads 4 \
 --early-stop --amp 
+
+# or try 
+torchrun --nnodes=1 --nproc_per_node=2 --rdzv_id=100 --rdzv_backend=c10d \
+main_mlc.py \
+--dataset_dir '/path/to/COCO14/' \
+--backbone resnet101 --dataname coco14 --batch-size 128 --print-freq 100 \
+--output "path/to/output" \
+--world-size 1 --rank 0 --dist-url tcp://127.0.0.1:3717 \
+--gamma_pos 0 --gamma_neg 2 --dtgfl \
+--epochs 80 --lr 1e-4 --optim AdamW --pretrained \
+--num_class 80 --img_size 448 --weight-decay 1e-2 \
+--cutout --n_holes 1 --cut_fact 0.5 \
+--hidden_dim 2048 --dim_feedforward 8192 \
+--enc_layers 1 --dec_layers 2 --nheads 4 \
+--early-stop --amp 
 ```
 
 
