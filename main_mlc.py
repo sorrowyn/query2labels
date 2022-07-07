@@ -181,7 +181,8 @@ def main():
         #   python -m torch.distributed.launch --nproc_per_node=8 main.py --world-size 2 --rank 1 --dist-url 'tcp://IP_OF_NODE0:FREEPORT' ...
         local_world_size = int(os.environ['WORLD_SIZE'])
         args.world_size = args.world_size * local_world_size
-        args.rank = args.rank * local_world_size + args.local_rank
+        args.local_rank = int(os.environ["LOCAL_RANK"])
+        args.rank = args.rank * local_world_size + int(os.environ["LOCAL_RANK"])
         print('world size: {}, world rank: {}, local rank: {}'.format(args.world_size, args.rank, args.local_rank))
         print('os.environ:', os.environ)
     else:
