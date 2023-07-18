@@ -94,7 +94,8 @@ e.g.
 python q2l_infer.py -a 'Q2L-R101-448' --config "pretrained/Q2L-R101-448/config_new.json" -b 16 --resume 'pretrained/Q2L-R101-448/checkpoint.pkl'
 ```
 
-
+## News
+extended version: [https://github.com/yu-gi-oh-leilei/SADCL](https://github.com/yu-gi-oh-leilei/SADCL)
 
 # BibTex
 ```
